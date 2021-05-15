@@ -1,6 +1,5 @@
 package com.example.ecommerceapp.services;
 
-import com.example.ecommerceapp.entities.Product;
 import com.example.ecommerceapp.entities.ProductCategory;
 import com.example.ecommerceapp.repositories.ProductCategoryRepository;
 import org.springframework.stereotype.Service;
@@ -15,7 +14,6 @@ public class ProductCategoryServiceImpl implements ProductCategoryService{
     public ProductCategoryServiceImpl(ProductCategoryRepository productCategoryRepository) {
         this.productCategoryRepository = productCategoryRepository;
     }
-
 
     @Override
     public List<ProductCategory> findAllCategories() {
@@ -33,12 +31,7 @@ public class ProductCategoryServiceImpl implements ProductCategoryService{
     }
 
     @Override
-    public ProductCategory update(long id, ProductCategory productCategory) {
-        return productCategoryRepository.findById(id);
-    }
-
-    @Override
-    public void delete(long id) {
+    public void deleteById(long id) {
         productCategoryRepository.deleteById(id);
     }
 }

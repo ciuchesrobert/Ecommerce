@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/v1")
+@RequestMapping(path = "/api/v1")
 public class ProductCategoryController {
 
     private final ProductCategoryService productCategoryService;
@@ -31,8 +31,10 @@ public class ProductCategoryController {
         return productCategoryService.findById(id);
     }
 
-//    @PostMapping("/category/{id}")
-//    public ProductCategory updateCategory(@PathVariable("id") long id, @RequestBody ProductCategory productCategory){
-//        return productCategoryService.update(productCategoryService.findById(id));
-//    }
+    @DeleteMapping("/category/{id}")
+    public void deleteProductCategory(@PathVariable("id") long id){
+        productCategoryService.deleteById(id);
+    }
+
+
 }

@@ -9,6 +9,5 @@ public interface ProductCategoryService {
     List<ProductCategory> findAllCategories();
     ProductCategory saveCategory(ProductCategory productCategory);
     ProductCategory findById(long id);
-    ProductCategory update(long id, ProductCategory productCategory);
-    void delete(long id);
+    void deleteById(long id);
 }
