@@ -1,9 +1,12 @@
 package com.example.ecommerceapp.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -43,13 +46,15 @@ public class Product {
     private Integer unitsInStock;
 
     @Column(name = "date_created")
+    @CreationTimestamp
     private Date dateCreated;
 
     @Column(name = "last_updated")
+    @UpdateTimestamp
     private Date lastUpdated;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "category_id")
+    @JoinColumn(name = "category_id", nullable = false)
     @JsonIgnore
     private ProductCategory productCategory;
 }
