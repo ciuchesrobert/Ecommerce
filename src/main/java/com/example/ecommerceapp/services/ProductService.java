@@ -12,6 +12,8 @@ public interface ProductService {
 
     List<Product> findByCategoryId(long id);
 
+    List<Product> findByName(String name);
+
     Product findById(long id);
 
     Product update(Product product);

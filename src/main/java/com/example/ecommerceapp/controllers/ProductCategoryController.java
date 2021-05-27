@@ -9,7 +9,7 @@ import java.util.Optional;
 
 @CrossOrigin("http://localhost:4200")
 @RestController
-@RequestMapping(path = "/api/v1")
+@RequestMapping(path = "/api")
 public class ProductCategoryController {
 
     private final ProductCategoryService productCategoryService;

@@ -18,12 +18,12 @@ public class ProductCategory {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
-    private Long categoryId;
+    private Long id;
 
     @Column(name = "category_name")
     private String categoryName;
 
-    @OneToMany(mappedBy = "productCategory",cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "category",cascade = CascadeType.ALL)
     @JsonIgnore
     private List<Product> productsList;
 

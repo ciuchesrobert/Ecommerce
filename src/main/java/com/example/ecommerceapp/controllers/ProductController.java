@@ -9,7 +9,7 @@ import java.util.Optional;
 
 @CrossOrigin("http://localhost:4200")
 @RestController
-@RequestMapping(path = "/api/v1")
+@RequestMapping(path = "/api")
 public class ProductController {
 
     private final ProductService productService;
@@ -18,22 +18,27 @@ public class ProductController {
         this.productService = productService;
     }
 
-    @PostMapping("/product")
+    @PostMapping("/products")
     public Product saveProduct(@RequestBody Product product){
         return productService.saveProduct(product);
     }
 
-    @GetMapping("/product")
+    @GetMapping("/products")
     public List<Product> findProductsByCategoryId(@RequestParam("category_id") long id){
         return productService.findByCategoryId(id);
     }
 
-    @GetMapping("/product/{id}")
-    public Product findByIdProducts(@PathVariable("id") long id){
+    @GetMapping("/products/search")
+    public List<Product> findProductsByName(@RequestParam("keyword") String keyword){
+        return productService.findByName(keyword);
+    }
+
+    @GetMapping("/products/{id}")
+    public Product findByIdProduct(@PathVariable("id") long id){
         return productService.findById(id);
     }
 
-    @PutMapping("/product/{id}")
+    @PutMapping("/products/{id}")
     public Product updateProduct(@PathVariable("id") long id, @RequestBody Product product) {
         Optional<Product> productFromDatabase = Optional.ofNullable(productService.findById(id));
         if (productFromDatabase.isPresent()) {
@@ -51,7 +56,7 @@ public class ProductController {
         return productService.update(product);
     }
 
-    @DeleteMapping("/product/{id}")
+    @DeleteMapping("/products/{id}")
     public void deleteProduct(@PathVariable("id") long id){
         productService.delete(id);
     }
