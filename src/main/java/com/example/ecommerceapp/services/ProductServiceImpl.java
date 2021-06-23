@@ -2,6 +2,8 @@ package com.example.ecommerceapp.services;
 
 import com.example.ecommerceapp.entities.Product;
 import com.example.ecommerceapp.repositories.ProductRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -31,13 +33,13 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public List<Product> findByCategoryId(long id) {
-        return productRepository.findByCategoryId(id);
+    public Page<Product> findByCategoryId(long id, Pageable pageable) {
+        return productRepository.findByCategoryId(id, pageable);
     }
 
     @Override
-    public List<Product> findByName(String name) {
-        return productRepository.findByNameContaining(name);
+    public Page<Product> findByName(String name, Pageable pageable) {
+        return productRepository.findByNameContaining(name, pageable);
     }
 
     @Override

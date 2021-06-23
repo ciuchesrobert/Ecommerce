@@ -2,9 +2,10 @@ package com.example.ecommerceapp.controllers;
 
 import com.example.ecommerceapp.entities.Product;
 import com.example.ecommerceapp.services.ProductService;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 import java.util.Optional;
 
 @CrossOrigin("http://localhost:4200")
@@ -24,13 +25,13 @@ public class ProductController {
     }
 
     @GetMapping("/products")
-    public List<Product> findProductsByCategoryId(@RequestParam("category_id") long id){
-        return productService.findByCategoryId(id);
+    public Page<Product> findProductsByCategoryId(@RequestParam("category_id") long id, Pageable pageable){
+        return productService.findByCategoryId(id, pageable);
     }
 
     @GetMapping("/products/search")
-    public List<Product> findProductsByName(@RequestParam("keyword") String keyword){
-        return productService.findByName(keyword);
+    public Page<Product> findProductsByName(@RequestParam("keyword") String keyword, Pageable pageable){
+        return productService.findByName(keyword, pageable);
     }
 
     @GetMapping("/products/{id}")

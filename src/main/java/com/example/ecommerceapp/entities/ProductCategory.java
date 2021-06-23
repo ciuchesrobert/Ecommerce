@@ -1,16 +1,16 @@
 package com.example.ecommerceapp.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Data
 @Table(name = "product_category")
+//@Data known bug
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 public class ProductCategory {
